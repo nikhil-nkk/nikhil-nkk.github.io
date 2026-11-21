@@ -1,124 +1,151 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>NIKHIL KANTH // WELCOME</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIKHIL KR KANTH</title>
 <style>
-body { font-family: monospace; margin: 0; background: #12002b; color: #fff; text-align: center; }
-.header { background: #1a003d; border-bottom: 2px solid #00bfff; padding: 15px; box-shadow: 0 0 20px #00bfff; }
-.header a { color: #00bfff; margin: 8px; text-decoration: none; font-weight: bold; }
-.hero { background: radial-gradient(circle, #2a007a, #12002b); padding: 35px 15px; }
-.hero img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #00bfff; box-shadow: 0 0 30px #00bfff; object-fit: cover; }
-.moving-name { font-size: 42px; margin: 15px 0; color: #fff; text-shadow: 0 0 10px #00bfff, 0 0 30px #4a00ff; animation: move 1.5s infinite alternate; }
-@keyframes move { from { transform: translateX(-15px); } to { transform: translateX(15px); } }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
+  body { background: #0a001a; color: white; }
 
-/* WELCOME BUBBLE - POPS WHEN WEBSITE OPENS */
-.welcome-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18,0,43,0.85); display: flex; justify-content: center; align-items: center; z-index: 999; }
-.welcome-bubble {
-  background: #fff; color: #000;
-  width: 85%; max-width: 380px;
-  padding: 25px 20px 20px;
-  border-radius: 28px 28px 28px 5px;
-  text-align: left;
-  border: 3px solid #00bfff;
-  box-shadow: 0 0 40px #00bfff;
-  position: relative;
-  animation: pop 0.6s ease;
-}
-@keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.welcome-bubble:before {
-  content: ""; position: absolute; left: -10px; bottom: 0;
-  width: 25px; height: 25px; background: #fff;
-  border-left: 3px solid #00bfff; border-bottom: 3px solid #00bfff;
-  clip-path: polygon(0 100%, 100% 100%, 100% 0);
-}
-.welcome-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.welcome-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #00bfff; object-fit: cover; }
-.welcome-top b { font-size: 16px; }
-.welcome-top span { font-size: 12px; color: #555; display: block; }
-.welcome-text { font-size: 17px; line-height: 1.5; min-height: 70px; font-weight: bold; }
-.close-btn { margin-top: 15px; width: 100%; padding: 12px; background: #00bfff; color: #000; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; }
-.typing-dot { color: #00bfff; }
+  /* TOP HEADER */
+  .top-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 15px; font-size: 12px; font-weight: bold;
+    border-bottom: 1px solid #333;
+  }
+  .top-bar .left { color: #ff00ff; }
+  .top-bar .right { color: #00ffff; }
 
-.box { background: #1e004d; margin: 20px 15px; padding: 25px 20px; border-radius: 30px; border: 2px solid #00bfff; box-shadow: 0 0 20px #00bfff55; }
-.skill-bubble { background: #00bfff; color: #000; display: inline-block; padding: 10px 20px; margin: 6px; border-radius: 50px; font-weight: bold; }
-.cyber-btn { padding: 14px 35px; margin-top: 20px; background: #00bfff; color: #000; border: none; font-size: 18px; font-weight: bold; border-radius: 50px; box-shadow: 0 0 25px #00bfff; }
-.footer { background: #1a003d; color: white; padding: 20px; border-top: 2px solid #00bfff; margin-top: 30px; border-radius: 30px 30px 0 0; }
-.footer a { color: #00bfff; }
-h2 { color: #00bfff; text-shadow: 0 0 10px #00bfff; }
+  /* BIG TITLE */
+  .title {
+    text-align: center; font-size: 38px; font-weight: 900;
+    line-height: 1; margin: 20px 10px 5px;
+    color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    text-align: center; color: #ff00ff; font-size: 14px;
+    letter-spacing: 4px; margin-bottom: 20px; font-weight: bold;
+  }
+
+  /* COMMON BOX - Straight, Dark Inside, Lilac Border */
+  .box {
+    background: #1a003d;
+    border: 2px solid #7ec8ff;
+    margin: 15px;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #7ec8ff55;
+  }
+  .box h2 { color: #7ec8ff; font-size: 18px; margin-bottom: 15px; }
+
+  /* HELLO BOX */
+  .hello-box { text-align: left; }
+  .profile-row { display: flex; align-items: flex-start; gap: 15px; }
+  .profile-pic {
+    width: 90px; height: 90px; border-radius: 50%;
+    border: 3px solid #00ffcc; object-fit: cover;
+    box-shadow: 0 0 20px #00ffcc;
+    flex-shrink: 0;
+  }
+  .hello-text { font-size: 16px; line-height: 1.6; }
+  .hello-text b { color: #00ffcc; }
+
+  /* ENTER BUTTON */
+  .enter-btn {
+    display: block; width: 100%; margin-top: 20px;
+    background: #00ffcc; color: #000; border: none;
+    padding: 14px; font-size: 16px; font-weight: 900;
+    border-radius: 8px; cursor: pointer; letter-spacing: 2px;
+  }
+
+  /* SKILLS */
+  .skills-list { list-style: none; line-height: 2; font-size: 15px; }
+  .skills-list li::before { content: "▸ "; color: #00ffcc; }
+
+  /* CONTACT BUTTONS */
+  .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+  /* WHATSAPP - GREEN */
+  .btn-whatsapp {
+    background: #25D366;
+    color: #fff; text-decoration: none;
+    padding: 14px 20px; border-radius: 50px;
+    font-weight: bold; font-size: 15px; text-align: center;
+    box-shadow: 0 0 20px #25D36688;
+    display: inline-block; line-height: 1.4;
+  }
+
+  /* INSTAGRAM - LIGHT RED */
+  .btn-insta {
+    background: #FF6B6B;
+    color: #fff; text-decoration: none;
+    padding: 14px 20px; border-radius: 50px;
+    font-weight: bold; font-size: 15px; text-align: center;
+    box-shadow: 0 0 20px #FF6B6B88;
+    display: inline-block; line-height: 1.4;
+  }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
 </style>
 </head>
 <body>
 
-<!-- WELCOME BUBBLE - SHOWS WHEN WEBSITE OPENS -->
-<div class="welcome-overlay" id="welcome">
-  <div class="welcome-bubble">
-    <div class="welcome-top">
-      <img src="photo.jpg">
-      <div><b>NIKHIL KANTH</b><span>Online • Just now</span></div>
-    </div>
-    <div class="welcome-text" id="welcomeTyping"></div>
-    <button class="close-btn" onclick="document.getElementById('welcome').style.display='none'">👋 HEY NIKHIL, LET'S GO →</button>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="left">NIKHIL_KR_KANTH</div>
+    <div class="right">SYSTEM_ONLINE</div>
   </div>
-</div>
 
-<div class="header">
-<b>[ NIKHIL_KANTH // SYSTEM ONLINE ]</b><br>
-<a href="#about">ABOUT</a>
-<a href="#skills">SKILLS</a>
-<a href="#projects">PROJECTS</a>
-<a href="#contact">CONTACT</a>
-</div>
+  <!-- TITLE -->
+  <div class="title">NIKHIL<br>KR KANTH</div>
+  <div class="subtitle">/// CYBER_DEVELOPER</div>
 
-<div class="hero">
-<img src="photo.jpg" alt="NIKHIL">
-<h1 class="moving-name">NIKHIL KANTH</h1>
-<p>Student | Future Developer | Jhapa, Nepal</p>
-<button class="cyber-btn" onclick="document.getElementById('welcome').style.display='flex'">💬 SHOW WELCOME AGAIN</button>
-</div>
+  <!-- HELLO BOX -->
+  <div class="box hello-box">
+    <div class="profile-row">
+      <!-- CHANGE photo.jpg TO YOUR PHOTO NAME -->
+      <img src="photo.jpg" alt="Nikhil Kr Kanth" class="profile-pic">
+      <div class="hello-text">
+        Hello, I am <b>Nikhil Kr Kanth.</b><br>
+        Student | Future Cyber Developer<br>
+        | From Jhapa, Nepal.
+      </div>
+    </div>
+    <button class="enter-btn">ENTER SYSTEM</button>
+  </div>
 
-<div class="box" id="about">
-<h2>/// ABOUT_ME</h2>
-<p>I am building the future. I love coding, design and technology. This website is made by me, 100% by hand on GitHub.</p>
-</div>
+  <!-- SKILLS BOX -->
+  <div class="box">
+    <h2>/// SKILLS</h2>
+    <ul class="skills-list">
+      <li>HTML & CSS</li>
+      <li>Beginner Coding</li>
+      <li>Cyber Security - Learning</li>
+      <li>Entrepreneur Mindset</li>
+    </ul>
+  </div>
 
-<div class="box" id="skills">
-<h2>/// MY_SKILLS</h2>
-<span class="skill-bubble">HTML_5</span>
-<span class="skill-bubble">CSS_3</span>
-<span class="skill-bubble">JAVASCRIPT</span>
-<span class="skill-bubble">GITHUB</span>
-<span class="skill-bubble">DESIGN</span>
-</div>
+  <!-- CONTACT BOX -->
+  <div class="box">
+    <h2>/// CONTACT_ME</h2>
+    <div class="btn-row">
+      <!-- WHATSAPP - GREEN -->
+      <a class="btn-whatsapp" href="https://wa.me/9779701385969" target="_blank">
+        WHATSAPP<br>9701385969
+      </a>
 
-<div class="box" id="projects">
-<h2>/// PROJECTS</h2>
-<p>01. PURPLE PORTFOLIO - This website</p>
-<p>02. NEXT PROJECT - Loading... 99%</p>
-</div>
+      <!-- INSTAGRAM - LIGHT RED -->
+      <a class="btn-insta" href="https://instagram.com/nikhil_nkk_kanth" target="_blank">
+        INSTAGRAM<br>@nikhil_nkk_kanth
+      </a>
+    </div>
+  </div>
 
-<div class="box" id="contact">
-<h2>/// CONTACT</h2>
-<p>INSTAGRAM: @nikhil_nkk_kanth</p>
-<p>GITHUB: nikhil-nkk</p>
-<p>LOCATION: JHAPA, NEPAL</p>
-</div>
-
-<div class="footer">
-<p>© 2026 NIKHIL KANTH | WELCOME BUBBLE v6.0</p>
-<a href="https://instagram.com/nikhil_nkk_kanth">FOLLOW ON INSTAGRAM</a>
-</div>
-
-<script>
-let wText = "Hey there! 👋 My name is Nikhil Kanth. Welcome to my website! I am from Jhapa, Nepal. Scroll down to see my world...";
-let wi = 0;
-function typeWelcome(){
-  if(wi < wText.length){
-    document.getElementById("welcomeTyping").innerHTML += wText.charAt(wi);
-    wi++;
-    setTimeout(typeWelcome, 40);
-  }
-}
-typeWelcome();
-</script>
+  <div class="footer">© 2026 Nikhil Kr Kanth | Jhapa, Nepal</div>
 
 </body>
 </html>
