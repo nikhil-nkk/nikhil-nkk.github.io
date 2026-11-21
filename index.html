@@ -1,24 +1,64 @@
 <html>
 <head>
-<title>NIKHIL KANTH // CYBER</title>
+<title>NIKHIL KANTH // WELCOME</title>
 <style>
-body { font-family: monospace; margin: 0; background: #000; color: #00ffcc; text-align: center; }
-.header { background: #001a14; border-bottom: 2px solid #00ffcc; padding: 15px; box-shadow: 0 0 20px #00ffcc; }
-.header a { color: #00ffcc; margin: 10px; text-decoration: none; font-weight: bold; }
-.hero { background: radial-gradient(circle, #001a2e, #000); padding: 50px 20px; border-bottom: 2px solid #00ffcc; }
-.hero img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #00ffcc; box-shadow: 0 0 30px #00ffcc; object-fit: cover; }
-.moving-name { font-size: 45px; margin: 15px 0; color: #00ffcc; text-shadow: 0 0 10px #00ffcc, 0 0 30px #00ffcc; animation: move 1.5s infinite alternate; }
-@keyframes move { from { transform: translateX(-15px) scale(1); } to { transform: translateX(15px) scale(1.05); } }
-.typing { font-size: 18px; color: #fff; min-height: 30px; }
-.cyber-btn { padding: 12px 30px; margin-top: 20px; background: #00ffcc; color: black; border: none; font-size: 18px; font-weight: bold; }
-.box { background: #0a0a0a; margin: 20px; padding: 25px; border: 1px solid #00ffcc; box-shadow: 0 0 15px #00ffcc33; }
-.skill { background: #001a14; color: #00ffcc; border: 1px solid #00ffcc; display: inline-block; padding: 8px 18px; margin: 5px; }
-.footer { background: #001a14; color: white; padding: 20px; border-top: 2px solid #00ffcc; }
-.footer a { color: #00ffcc; }
-h2 { text-shadow: 0 0 10px #00ffcc; }
+body { font-family: monospace; margin: 0; background: #12002b; color: #fff; text-align: center; }
+.header { background: #1a003d; border-bottom: 2px solid #00bfff; padding: 15px; box-shadow: 0 0 20px #00bfff; }
+.header a { color: #00bfff; margin: 8px; text-decoration: none; font-weight: bold; }
+.hero { background: radial-gradient(circle, #2a007a, #12002b); padding: 35px 15px; }
+.hero img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #00bfff; box-shadow: 0 0 30px #00bfff; object-fit: cover; }
+.moving-name { font-size: 42px; margin: 15px 0; color: #fff; text-shadow: 0 0 10px #00bfff, 0 0 30px #4a00ff; animation: move 1.5s infinite alternate; }
+@keyframes move { from { transform: translateX(-15px); } to { transform: translateX(15px); } }
+
+/* WELCOME BUBBLE - POPS WHEN WEBSITE OPENS */
+.welcome-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18,0,43,0.85); display: flex; justify-content: center; align-items: center; z-index: 999; }
+.welcome-bubble {
+  background: #fff; color: #000;
+  width: 85%; max-width: 380px;
+  padding: 25px 20px 20px;
+  border-radius: 28px 28px 28px 5px;
+  text-align: left;
+  border: 3px solid #00bfff;
+  box-shadow: 0 0 40px #00bfff;
+  position: relative;
+  animation: pop 0.6s ease;
+}
+@keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.welcome-bubble:before {
+  content: ""; position: absolute; left: -10px; bottom: 0;
+  width: 25px; height: 25px; background: #fff;
+  border-left: 3px solid #00bfff; border-bottom: 3px solid #00bfff;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+.welcome-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.welcome-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #00bfff; object-fit: cover; }
+.welcome-top b { font-size: 16px; }
+.welcome-top span { font-size: 12px; color: #555; display: block; }
+.welcome-text { font-size: 17px; line-height: 1.5; min-height: 70px; font-weight: bold; }
+.close-btn { margin-top: 15px; width: 100%; padding: 12px; background: #00bfff; color: #000; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; }
+.typing-dot { color: #00bfff; }
+
+.box { background: #1e004d; margin: 20px 15px; padding: 25px 20px; border-radius: 30px; border: 2px solid #00bfff; box-shadow: 0 0 20px #00bfff55; }
+.skill-bubble { background: #00bfff; color: #000; display: inline-block; padding: 10px 20px; margin: 6px; border-radius: 50px; font-weight: bold; }
+.cyber-btn { padding: 14px 35px; margin-top: 20px; background: #00bfff; color: #000; border: none; font-size: 18px; font-weight: bold; border-radius: 50px; box-shadow: 0 0 25px #00bfff; }
+.footer { background: #1a003d; color: white; padding: 20px; border-top: 2px solid #00bfff; margin-top: 30px; border-radius: 30px 30px 0 0; }
+.footer a { color: #00bfff; }
+h2 { color: #00bfff; text-shadow: 0 0 10px #00bfff; }
 </style>
 </head>
 <body>
+
+<!-- WELCOME BUBBLE - SHOWS WHEN WEBSITE OPENS -->
+<div class="welcome-overlay" id="welcome">
+  <div class="welcome-bubble">
+    <div class="welcome-top">
+      <img src="photo.jpg">
+      <div><b>NIKHIL KANTH</b><span>Online • Just now</span></div>
+    </div>
+    <div class="welcome-text" id="welcomeTyping"></div>
+    <button class="close-btn" onclick="document.getElementById('welcome').style.display='none'">👋 HEY NIKHIL, LET'S GO →</button>
+  </div>
+</div>
 
 <div class="header">
 <b>[ NIKHIL_KANTH // SYSTEM ONLINE ]</b><br>
@@ -31,29 +71,28 @@ h2 { text-shadow: 0 0 10px #00ffcc; }
 <div class="hero">
 <img src="photo.jpg" alt="NIKHIL">
 <h1 class="moving-name">NIKHIL KANTH</h1>
-<p>>> SYSTEM LOADING...</p>
-<p class="typing" id="typing"></p>
-<button class="cyber-btn" onclick="alert('ACCESS GRANTED - Welcome to Cyber World of Nikhil!')">⚡ ENTER SYSTEM ⚡</button>
+<p>Student | Future Developer | Jhapa, Nepal</p>
+<button class="cyber-btn" onclick="document.getElementById('welcome').style.display='flex'">💬 SHOW WELCOME AGAIN</button>
 </div>
 
 <div class="box" id="about">
-<h2>/// ABOUT_ME.EXE</h2>
-<p id="typing2"></p>
+<h2>/// ABOUT_ME</h2>
+<p>I am building the future. I love coding, design and technology. This website is made by me, 100% by hand on GitHub.</p>
 </div>
 
 <div class="box" id="skills">
 <h2>/// MY_SKILLS</h2>
-<span class="skill">HTML_5</span>
-<span class="skill">CSS_3</span>
-<span class="skill">JAVASCRIPT</span>
-<span class="skill">GITHUB</span>
-<span class="skill">CYBER_DESIGN</span>
+<span class="skill-bubble">HTML_5</span>
+<span class="skill-bubble">CSS_3</span>
+<span class="skill-bubble">JAVASCRIPT</span>
+<span class="skill-bubble">GITHUB</span>
+<span class="skill-bubble">DESIGN</span>
 </div>
 
 <div class="box" id="projects">
 <h2>/// PROJECTS</h2>
-<p><b>01. CYBER PORTFOLIO</b> - This website you are seeing.</p>
-<p><b>02. NEXT PROJECT</b> - Loading... 99%</p>
+<p>01. PURPLE PORTFOLIO - This website</p>
+<p>02. NEXT PROJECT - Loading... 99%</p>
 </div>
 
 <div class="box" id="contact">
@@ -64,19 +103,21 @@ h2 { text-shadow: 0 0 10px #00ffcc; }
 </div>
 
 <div class="footer">
-<p>© 2026 NIKHIL KANTH | CYBERNETIC SYSTEM v2.0</p>
+<p>© 2026 NIKHIL KANTH | WELCOME BUBBLE v6.0</p>
 <a href="https://instagram.com/nikhil_nkk_kanth">FOLLOW ON INSTAGRAM</a>
 </div>
 
 <script>
-let text1 = "Hello, I am Nikhil Kanth. Student | Future Cyber Developer | From Jhapa, Nepal";
-let i=0;
-function type1(){ if(i<text1.length){ document.getElementById("typing").innerHTML+=text1.charAt(i); i++; setTimeout(type1,45);} }
-type1();
-let text2 = "I am building the future. I love coding, cyber design and technology. This website is made by me, 100% by hand on GitHub.";
-let j=0;
-function type2(){ if(j<text2.length){ document.getElementById("typing2").innerHTML+=text2.charAt(j); j++; setTimeout(type2,25);} }
-type2();
+let wText = "Hey there! 👋 My name is Nikhil Kanth. Welcome to my website! I am from Jhapa, Nepal. Scroll down to see my world...";
+let wi = 0;
+function typeWelcome(){
+  if(wi < wText.length){
+    document.getElementById("welcomeTyping").innerHTML += wText.charAt(wi);
+    wi++;
+    setTimeout(typeWelcome, 40);
+  }
+}
+typeWelcome();
 </script>
 
 </body>
