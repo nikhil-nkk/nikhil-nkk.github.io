@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +6,18 @@
 <title>NIKHIL KR KANTH</title>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
-  body { background: #0a001a; color: white; }
+  body { background: #0a001a; color: white; overflow-x: hidden; }
 
-  /* TOP HEADER */
+  /* 1 and 0 - DYNAMIC MOVEMENT ALL OVER PAGE */
+  #binary-bg {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0; opacity: 0.45;
+    pointer-events: none;
+  }
+  .content { position: relative; z-index: 1; }
+
+  /* SAME - NOT CHANGED */
   .top-bar {
     display: flex; justify-content: space-between; align-items: center;
     padding: 12px 15px; font-size: 12px; font-weight: bold;
@@ -17,108 +25,83 @@
   }
   .top-bar .left { color: #ff00ff; }
   .top-bar .right { color: #00ffff; }
-
-  /* BIG TITLE */
-  .title {
-    text-align: center; font-size: 38px; font-weight: 900;
-    line-height: 1; margin: 20px 10px 5px;
+  .hero-top { display: flex; align-items: center; gap: 18px; padding: 25px 15px 10px; }
+  .profile-pic {
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 3px solid #00ffcc; object-fit: cover;
+    box-shadow: 0 0 20px #00ffcc; flex-shrink: 0;
+  }
+  .hero-name {
+    font-size: 36px; font-weight: 900; line-height: 1.1;
     color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
-    letter-spacing: 2px;
   }
-  .subtitle {
-    text-align: center; color: #ff00ff; font-size: 14px;
-    letter-spacing: 4px; margin-bottom: 20px; font-weight: bold;
+  .hero-role { color: #ff00ff; font-size: 13px; letter-spacing: 3px; font-weight: bold; margin-top: 6px; }
+  .typing-line {
+    text-align: center; color: #fff; font-size: 16px;
+    min-height: 28px; margin: 12px 15px 20px;
   }
-
-  /* COMMON BOX - Straight, Dark Inside, Lilac Border */
+  .typing-line::after { content: "|"; color: #00ffcc; animation: blink 0.7s infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
   .box {
-    background: #1a003d;
-    border: 2px solid #7ec8ff;
-    margin: 15px;
-    padding: 25px 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #7ec8ff55;
+    background: #1a003d; border: 2px solid #7ec8ff;
+    margin: 15px; padding: 25px 20px;
+    border-radius: 12px; box-shadow: 0 0 20px #7ec8ff55;
   }
   .box h2 { color: #7ec8ff; font-size: 18px; margin-bottom: 15px; }
-
-  /* HELLO BOX */
-  .hello-box { text-align: left; }
-  .profile-row { display: flex; align-items: flex-start; gap: 15px; }
-  .profile-pic {
-    width: 90px; height: 90px; border-radius: 50%;
-    border: 3px solid #00ffcc; object-fit: cover;
-    box-shadow: 0 0 20px #00ffcc;
-    flex-shrink: 0;
-  }
   .hello-text { font-size: 16px; line-height: 1.6; }
   .hello-text b { color: #00ffcc; }
-
-  /* ENTER BUTTON */
   .enter-btn {
     display: block; width: 100%; margin-top: 20px;
     background: #00ffcc; color: #000; border: none;
     padding: 14px; font-size: 16px; font-weight: 900;
     border-radius: 8px; cursor: pointer; letter-spacing: 2px;
   }
-
-  /* SKILLS */
   .skills-list { list-style: none; line-height: 2; font-size: 15px; }
   .skills-list li::before { content: "▸ "; color: #00ffcc; }
-
-  /* CONTACT BUTTONS */
   .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-
-  /* WHATSAPP - GREEN */
   .btn-whatsapp {
-    background: #25D366;
-    color: #fff; text-decoration: none;
-    padding: 14px 20px; border-radius: 50px;
-    font-weight: bold; font-size: 15px; text-align: center;
-    box-shadow: 0 0 20px #25D36688;
-    display: inline-block; line-height: 1.4;
+    background: #25D366; color: #fff; text-decoration: none;
+    padding: 14px 20px; border-radius: 50px; font-weight: bold;
+    font-size: 15px; text-align: center; display: inline-block; line-height: 1.4;
   }
-
-  /* INSTAGRAM - LIGHT RED */
   .btn-insta {
-    background: #FF6B6B;
-    color: #fff; text-decoration: none;
-    padding: 14px 20px; border-radius: 50px;
-    font-weight: bold; font-size: 15px; text-align: center;
-    box-shadow: 0 0 20px #FF6B6B88;
-    display: inline-block; line-height: 1.4;
+    background: #FF6B6B; color: #fff; text-decoration: none;
+    padding: 14px 20px; border-radius: 50px; font-weight: bold;
+    font-size: 15px; text-align: center; display: inline-block; line-height: 1.4;
   }
-
-  /* FOOTER */
   .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
 </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
+<canvas id="binary-bg"></canvas>
+
+<div class="content">
   <div class="top-bar">
     <div class="left">NIKHIL_KR_KANTH</div>
     <div class="right">SYSTEM_ONLINE</div>
   </div>
 
-  <!-- TITLE -->
-  <div class="title">NIKHIL<br>KR KANTH</div>
-  <div class="subtitle">/// CYBER_DEVELOPER</div>
+  <div class="hero-top">
+    <img src="photo.jpg" alt="Nikhil Kr Kanth" class="profile-pic">
+    <div>
+      <div class="hero-name">NIKHIL<br>KR KANTH</div>
+      <div class="hero-role">/// CYBER_DEVELOPER</div>
+    </div>
+  </div>
 
-  <!-- HELLO BOX -->
-  <div class="box hello-box">
-    <div class="profile-row">
-      <!-- CHANGE photo.jpg TO YOUR PHOTO NAME -->
-      <img src="photo.jpg" alt="Nikhil Kr Kanth" class="profile-pic">
-      <div class="hello-text">
-        Hello, I am <b>Nikhil Kr Kanth.</b><br>
-        Student | Future Cyber Developer<br>
-        | From Jhapa, Nepal.
-      </div>
+  <div class="typing-line" id="typing"></div>
+
+  <div class="box">
+    <h2>/// ABOUT_ME</h2>
+    <div class="hello-text">
+      Hello, I am <b>Nikhil Kr Kanth.</b><br>
+      Student | Future Cyber Developer<br>
+      | From Jhapa, Nepal.
     </div>
     <button class="enter-btn">ENTER SYSTEM</button>
   </div>
 
-  <!-- SKILLS BOX -->
   <div class="box">
     <h2>/// SKILLS</h2>
     <ul class="skills-list">
@@ -129,23 +112,66 @@
     </ul>
   </div>
 
-  <!-- CONTACT BOX -->
   <div class="box">
     <h2>/// CONTACT_ME</h2>
     <div class="btn-row">
-      <!-- WHATSAPP - GREEN -->
-      <a class="btn-whatsapp" href="https://wa.me/9779701385969" target="_blank">
-        WHATSAPP<br>9701385969
-      </a>
-
-      <!-- INSTAGRAM - LIGHT RED -->
-      <a class="btn-insta" href="https://instagram.com/nikhil_nkk_kanth" target="_blank">
-        INSTAGRAM<br>@nikhil_nkk_kanth
-      </a>
+      <a class="btn-whatsapp" href="https://wa.me/9779701385969" target="_blank">WHATSAPP<br>9701385969</a>
+      <a class="btn-insta" href="https://instagram.com/nikhil_nkk_kanth" target="_blank">INSTAGRAM<br>@nikhil_nkk_kanth</a>
     </div>
   </div>
 
   <div class="footer">© 2026 Nikhil Kr Kanth | Jhapa, Nepal</div>
+</div>
+
+<script>
+  // TYPING - SAME
+  let text = "Hello, I am Nikhil Kr Kanth. Student | Future Cyber Developer | From Jhapa, Nepal";
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++; setTimeout(type, 45);
+    }
+  }
+  type();
+
+  // 1 and 0 - DYNAMIC MOVEMENT ALL OVER PAGE
+  const canvas = document.getElementById("binary-bg");
+  const ctx = canvas.getContext("2d");
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const fontSize = 15;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = [];
+  function initDrops() {
+    columns = Math.floor(canvas.width / fontSize);
+    drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = Math.random() * -80;
+  }
+  initDrops();
+
+  function drawBinary() {
+    // Trail effect = smooth movement
+    ctx.fillStyle = "rgba(10,0,26,0.10)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = fontSize + "px monospace";
+    for (let i = 0; i < drops.length; i++) {
+      const char = Math.random() > 0.5 ? "1" : "0";
+      // Random green shades for depth
+      ctx.fillStyle = Math.random() > 0.9 ? "#ccffcc" : "#00ff00";
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i] += 0.7 + Math.random() * 0.6; // Different speeds = dynamic
+    }
+  }
+  setInterval(drawBinary, 33); // ~30fps - smooth movement
+</script>
 
 </body>
 </html>
+  
