@@ -8,67 +8,42 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
   body { background: #0a001a; color: white; overflow-x: hidden; }
 
-  /* 1 and 0 - DYNAMIC MOVEMENT ALL OVER PAGE */
-  #binary-bg {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0; opacity: 0.45;
-    pointer-events: none;
-  }
+  /* 1 and 0 - SAME, NOT CHANGED */
+  #binary-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.45; pointer-events: none; }
   .content { position: relative; z-index: 1; }
 
-  /* SAME - NOT CHANGED */
-  .top-bar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 15px; font-size: 12px; font-weight: bold;
-    border-bottom: 1px solid #333;
-  }
+  .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; font-size: 12px; font-weight: bold; border-bottom: 1px solid #333; }
   .top-bar .left { color: #ff00ff; }
   .top-bar .right { color: #00ffff; }
   .hero-top { display: flex; align-items: center; gap: 18px; padding: 25px 15px 10px; }
-  .profile-pic {
-    width: 110px; height: 110px; border-radius: 50%;
-    border: 3px solid #00ffcc; object-fit: cover;
-    box-shadow: 0 0 20px #00ffcc; flex-shrink: 0;
-  }
-  .hero-name {
-    font-size: 36px; font-weight: 900; line-height: 1.1;
-    color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
-  }
+  .profile-pic { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #00ffcc; object-fit: cover; box-shadow: 0 0 20px #00ffcc; flex-shrink: 0; }
+  .hero-name { font-size: 36px; font-weight: 900; line-height: 1.1; color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc; }
   .hero-role { color: #ff00ff; font-size: 13px; letter-spacing: 3px; font-weight: bold; margin-top: 6px; }
-  .typing-line {
-    text-align: center; color: #fff; font-size: 16px;
-    min-height: 28px; margin: 12px 15px 20px;
-  }
-  .typing-line::after { content: "|"; color: #00ffcc; animation: blink 0.7s infinite; }
+
+  /* TYPING - ALL BOXES */
+  .typing-line, .type-box { min-height: 24px; white-space: pre-line; }
+  .typing-line { text-align: center; color: #fff; font-size: 16px; min-height: 28px; margin: 12px 15px 20px; }
+  .cursor::after { content: "|"; color: #00ffcc; animation: blink 0.7s infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  .box {
-    background: #1a003d; border: 2px solid #7ec8ff;
-    margin: 15px; padding: 25px 20px;
-    border-radius: 12px; box-shadow: 0 0 20px #7ec8ff55;
-  }
+
+  .box { background: #1a003d; border: 2px solid #7ec8ff; margin: 15px; padding: 25px 20px; border-radius: 12px; box-shadow: 0 0 20px #7ec8ff55; }
   .box h2 { color: #7ec8ff; font-size: 18px; margin-bottom: 15px; }
   .hello-text { font-size: 16px; line-height: 1.6; }
   .hello-text b { color: #00ffcc; }
-  .enter-btn {
-    display: block; width: 100%; margin-top: 20px;
-    background: #00ffcc; color: #000; border: none;
-    padding: 14px; font-size: 16px; font-weight: 900;
-    border-radius: 8px; cursor: pointer; letter-spacing: 2px;
-  }
+  .enter-btn { display: block; width: 100%; margin-top: 20px; background: #00ffcc; color: #000; border: none; padding: 14px; font-size: 16px; font-weight: 900; border-radius: 8px; cursor: pointer; letter-spacing: 2px; }
   .skills-list { list-style: none; line-height: 2; font-size: 15px; }
   .skills-list li::before { content: "▸ "; color: #00ffcc; }
-  .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-  .btn-whatsapp {
-    background: #25D366; color: #fff; text-decoration: none;
-    padding: 14px 20px; border-radius: 50px; font-weight: bold;
-    font-size: 15px; text-align: center; display: inline-block; line-height: 1.4;
+
+  /* WHATSAPP + INSTAGRAM - SIDE BY SIDE */
+  .btn-row { display: flex; gap: 10px; flex-wrap: nowrap; }
+  .btn-whatsapp, .btn-insta {
+    flex: 1; text-decoration: none; padding: 14px 8px;
+    border-radius: 50px; font-weight: bold; font-size: 14px;
+    text-align: center; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; line-height: 1.4; min-height: 64px;
   }
-  .btn-insta {
-    background: #FF6B6B; color: #fff; text-decoration: none;
-    padding: 14px 20px; border-radius: 50px; font-weight: bold;
-    font-size: 15px; text-align: center; display: inline-block; line-height: 1.4;
-  }
+  .btn-whatsapp { background: #25D366; color: #fff; }
+  .btn-insta { background: #FF6B6B; color: #fff; }
   .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
 </style>
 </head>
@@ -90,33 +65,30 @@
     </div>
   </div>
 
-  <div class="typing-line" id="typing"></div>
+  <!-- TYPING 1 - TOP -->
+  <div class="typing-line cursor" id="typing1"></div>
 
   <div class="box">
     <h2>/// ABOUT_ME</h2>
-    <div class="hello-text">
-      Hello, I am <b>Nikhil Kr Kanth.</b><br>
-      Student | Future Cyber Developer<br>
-      | From Jhapa, Nepal.
-    </div>
+    <!-- TYPING 2 - ABOUT BOX -->
+    <div class="hello-text type-box cursor" id="typing2"></div>
     <button class="enter-btn">ENTER SYSTEM</button>
   </div>
 
   <div class="box">
     <h2>/// SKILLS</h2>
-    <ul class="skills-list">
-      <li>HTML & CSS</li>
-      <li>Beginner Coding</li>
-      <li>Cyber Security - Learning</li>
-      <li>Entrepreneur Mindset</li>
-    </ul>
+    <!-- TYPING 3 - SKILLS BOX -->
+    <div class="type-box cursor" id="typing3" style="font-size:15px; line-height:2;"></div>
   </div>
 
   <div class="box">
     <h2>/// CONTACT_ME</h2>
+    <!-- TYPING 4 - CONTACT TEXT -->
+    <div class="type-box cursor" id="typing4" style="font-size:14px; text-align:center; margin-bottom:14px;"></div>
+    <!-- WHATSAPP + INSTAGRAM SIDE BY SIDE -->
     <div class="btn-row">
-      <a class="btn-whatsapp" href="https://wa.me/9779701385969" target="_blank">WHATSAPP<br>9701385969</a>
-      <a class="btn-insta" href="https://instagram.com/nikhil_nkk_kanth" target="_blank">INSTAGRAM<br>@nikhil_nkk_kanth</a>
+      <a class="btn-whatsapp" href="https://wa.me/9779701385969" target="_blank"><span>WHATSAPP</span><span>9701385969</span></a>
+      <a class="btn-insta" href="https://instagram.com/nikhil_nkk_kanth" target="_blank"><span>INSTAGRAM</span><span>@nikhil_nkk_kanth</span></a>
     </div>
   </div>
 
@@ -124,52 +96,57 @@
 </div>
 
 <script>
-  // TYPING - SAME
-  let text = "Hello, I am Nikhil Kr Kanth. Student | Future Cyber Developer | From Jhapa, Nepal";
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      document.getElementById("typing").innerHTML += text.charAt(i);
-      i++; setTimeout(type, 45);
+  // TYPING ANIMATION - IN ALL BOXES, ONE AFTER ANOTHER
+  const typingData = [
+    { id: "typing1", text: "Hello, I am Nikhil Kr Kanth. Student | Future Cyber Developer | From Jhapa, Nepal" },
+    { id: "typing2", text: "Hello, I am Nikhil Kr Kanth.\nStudent | Future Cyber Developer\n| From Jhapa, Nepal." },
+    { id: "typing3", text: "▸ HTML & CSS\n▸ Beginner Coding\n▸ Cyber Security - Learning\n▸ Entrepreneur Mindset" },
+    { id: "typing4", text: "Connect with me on WhatsApp & Instagram:" }
+  ];
+  let boxIndex = 0;
+  function typeBox() {
+    if (boxIndex >= typingData.length) return;
+    const item = typingData[boxIndex];
+    const el = document.getElementById(item.id);
+    let i = 0;
+    function typeChar() {
+      if (i < item.text.length) {
+        el.textContent += item.text.charAt(i);
+        i++; setTimeout(typeChar, 30);
+      } else {
+        el.classList.remove("cursor");
+        boxIndex++;
+        setTimeout(typeBox, 300); // Next box starts
+      }
     }
+    typeChar();
   }
-  type();
+  typeBox();
 
-  // 1 and 0 - DYNAMIC MOVEMENT ALL OVER PAGE
+  // 1 and 0 - DYNAMIC, SAME AS BEFORE
   const canvas = document.getElementById("binary-bg");
   const ctx = canvas.getContext("2d");
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener("resize", resize);
   const fontSize = 15;
-  let columns = Math.floor(canvas.width / fontSize);
   let drops = [];
   function initDrops() {
-    columns = Math.floor(canvas.width / fontSize);
     drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = Math.random() * -80;
+    for (let x = 0; x < Math.floor(canvas.width / fontSize); x++) drops[x] = Math.random() * -80;
   }
   initDrops();
-
   function drawBinary() {
-    // Trail effect = smooth movement
     ctx.fillStyle = "rgba(10,0,26,0.10)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + "px monospace";
     for (let i = 0; i < drops.length; i++) {
-      const char = Math.random() > 0.5 ? "1" : "0";
-      // Random green shades for depth
       ctx.fillStyle = Math.random() > 0.9 ? "#ccffcc" : "#00ff00";
-      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+      ctx.fillText(Math.random() > 0.5 ? "1" : "0", i * fontSize, drops[i] * fontSize);
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-      drops[i] += 0.7 + Math.random() * 0.6; // Different speeds = dynamic
+      drops[i] += 0.7 + Math.random() * 0.6;
     }
   }
-  setInterval(drawBinary, 33); // ~30fps - smooth movement
+  setInterval(drawBinary, 33);
 </script>
 
 </body>
